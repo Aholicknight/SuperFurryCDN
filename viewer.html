@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Viewer</title>
+
+	<link rel="icon" type="image/png" href="assets/favicon-2.png">
+
+    <script src="socket.io/socket.io.js"></script>
+    <style>
+        body {
+            background-color: #ea899a;
+            background: linear-gradient(140deg, #ea899a, #4cc8e1);
+            background-size: 400% 400%;
+
+            -webkit-animation: background 18s ease infinite;
+            -moz-animation: background 18s ease infinite;
+            animation: background 18s ease infinite;
+        }
+
+        @-webkit-keyframes background {
+            0%{background-position:5% 0%}
+            50%{background-position:96% 100%}
+            100%{background-position:5% 0%}
+        }
+        @-moz-keyframes background {
+            0%{background-position:5% 0%}
+            50%{background-position:96% 100%}
+            100%{background-position:5% 0%}
+        }
+        @keyframes background {
+            0%{background-position:5% 0%}
+            50%{background-position:96% 100%}
+            100%{background-position:5% 0%}
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+
+            font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+            font-weight: bold;
+            font-size: 1.7rem;
+            text-align: center;
+            color: #fff;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #uuid {
+            padding: 1rem;
+
+            color: #333;
+            background-color: #fff;
+
+            font-size: 1.5rem;
+            text-align: center;
+
+            width: 30vw;
+            height: 2vh;
+            border-radius: 0.5rem;
+            border: none;
+        }
+        #gobtn {
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #fff;
+            border-radius: 0.5rem;
+            font-size: 1.4rem;
+            color: #fff;
+            transition: transform 1s linear;
+        }
+        #gobtn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <input type="text" id="uuid" placeholder="Paste here the UUID to view">
+        <div id="gobtn">View Screen</div>
+    </div>
+    <script type="text/javascript">
+
+        document.getElementById("gobtn").onclick = () => {
+            var uuid = document.getElementById("uuid").value;
+            if (!uuid) return;
+            window.location = "https://superfurrycdn.nl/viewer/" + uuid; 
+        }
+    </script>
+</body>
+</html>
